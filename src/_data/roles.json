@@ -1,0 +1,21 @@
+[
+    {  
+        "_id": "602c330166ac0d3a84b2056f",
+        "name": "superadmin",
+        "description": "Superadmin role has all access to perform all operations on the platform",
+        "slug": "super-admin",
+        "users": "602c3b9f551c1437203f5eb3"
+    },
+
+    {  
+        "name": "admin",
+        "description": "admin has limited access to perform all operations on the platform",
+        "slug": "admin"
+    },
+
+    {
+        "name": "user",
+        "description": "User is just a guest or user on the platform. All users have this role by default.",
+        "slug": "user"
+    }
+]    

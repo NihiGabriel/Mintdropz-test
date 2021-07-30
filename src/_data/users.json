@@ -1,0 +1,11 @@
+[
+	{
+		"_id": "602c3b9f551c1437203f5eb3",
+		"name": "Superadmin",
+		"email": "gabrielnihi@gmail.com",
+		"password": "Nihi1461@/_",
+		"roles": ["602c330166ac0d3a84b2056f"],
+		"isAdmin": true,
+		"superUser":true
+	}
+]
