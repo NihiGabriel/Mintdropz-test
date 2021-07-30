@@ -73,10 +73,17 @@ exports.addPost = asyncHandler( async (req, res, next) => {
 });
 
 // @desc    Upload User Photo to s3
-// @route   PUT /api/v1/auth/uploadFile
+// @route   PUT /api/v1/auth/uploadFile/:id
 // @access  Private/superadmin/admin
 exports.uploadFile = asyncHandler(async (req, res, next) => {
+
     const post = await Post.findById(req.params.id);
+
+	if(!post){
+		return next(
+            new ErrorResponse('Error', 400, ['cannot find post'])
+        );	
+	}
 
     const { file, fileName } = req.body;
 
@@ -123,16 +130,16 @@ exports.uploadFile = asyncHandler(async (req, res, next) => {
         const ud = {
             url: s3Data.url,
             createdon: dateToWordRaw()
-        }
+        } 
 
-        // return console.log(ud)
+        // return console.log(ud) 
  
         post.photo = ud.url;
-        await post.save(); 
+        post.save();  
 
         res.status(200).json({
             data: ud,
-            error: false,
+            error: false, 
             errors: [],
             message: 'User photo uploaded successfully',
             status: 200

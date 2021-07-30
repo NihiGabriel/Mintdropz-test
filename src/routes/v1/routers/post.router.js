@@ -27,7 +27,7 @@ router.use(authorize(roles)); // authorize only admin
 router.get('/', protect, authorize(allRoles), advancedResults(Post), getPosts);
 router.get('/:id', protect, authorize(allRoles), getPost);
 router.post('/', protect, authorize(allRoles), addPost);
-router.put('/upload', protect, authorize(allRoles), uploadFile);
+router.put('/upload/:id', protect, authorize(allRoles), uploadFile);
 router.put('/:id', protect, authorize(allRoles), updatePost);
 router.delete('/delete/:id', protect, authorize(allRoles),  deletePost);
 

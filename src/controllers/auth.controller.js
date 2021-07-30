@@ -68,7 +68,15 @@ exports.register = asyncHandler(async (req, res, next) => {
 exports.uploadFile = asyncHandler(async (req, res, next) => {
     const user = await User.findById(req.params.id);
 
+    
+    if(!user) {
+        return next(
+            new ErrorResponse('not found', 400, ['could not find user'])
+        );
+    }
+
     const { file, fileName } = req.body;
+
 
     if(!file) {
         return next(
@@ -118,7 +126,7 @@ exports.uploadFile = asyncHandler(async (req, res, next) => {
         // return console.log(ud)
 
         user.photo = ud.url;
-        await user.save();
+        user.save();
 
         res.status(200).json({
             data: ud,
